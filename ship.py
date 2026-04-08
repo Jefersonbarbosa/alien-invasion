@@ -12,8 +12,16 @@ class Ship:
         self.image = pygame.image.load('images/ship.bmp')
         self.rect = self.image.get_rect()
 
-        # Começa cada espaçonave nova no centro inderior da tela
+        # Começa cada espaçonave nova no centro inferior da tela
         self.rect.midbottom = self.screen_rect.midbottom
+
+        # Flag de movimento; começa com uma nave que não está se movendo
+        self.moving_right = False
+
+    def update(self):
+        """Atualiza a posiçao da espaçonave com base na flag de movimento"""
+        if self.moving_right:
+            self.rect.x += 1
 
     def blitme(self):
         """Desenha a espaçonave em sua localização atual"""
